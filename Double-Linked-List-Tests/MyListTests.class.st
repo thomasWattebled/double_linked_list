@@ -29,19 +29,19 @@ MyListTests >> testAddAfter [
 ]
 
 { #category : #running }
-MyListTests >> testBefore [
+MyListTests >> testAddBefore [
 	
 	list1 add: 10.
 	list1 add:5 before:10.
 	self assert: list1 size equals:2.
 	self assert: list1 head value equals:5.
 	list1 add:15 before:10.
-	self assert: list1 head next value equals:15.
+	self assert: list1 head next value equals:10.
 	
 ]
 
 { #category : #running }
-MyListTests >> testEmpty [
+MyListTests >> testIsEmpty [
 	
 	self assert: list1 isEmpty.
 	list1 add: 10.
