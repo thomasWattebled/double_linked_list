@@ -63,7 +63,7 @@ MyListTests >> testinclude [
 
 	list1 add: 10.
 	self deny: (list1 includes:5).
-	self add: 5.
+	list1 add: 5.
 	self assert: (list1 includes:5).
 	
 ]
