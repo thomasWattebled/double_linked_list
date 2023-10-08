@@ -21,7 +21,8 @@ MyListTests >> setUp [
 MyListTests >> testAddAfter [
 	
 	list1 add: 10.
-	list1 add: 15.
+	
+	self assert: (list1 add: 15) equals: 15.
 	list1 add:5 after:10.
 	self assert: list1 size equals:3.
 	self assert: list1 head next value equals:5.
@@ -37,6 +38,28 @@ MyListTests >> testAddBefore [
 	self assert: list1 head value equals:5.
 	list1 add:15 before:10.
 	self assert: list1 head next value equals:10.
+	
+]
+
+{ #category : #running }
+MyListTests >> testFind [
+
+	list1 add: 10.
+	self deny: (list1 find: 15).
+	list1 add:15.
+	self assert: (list1 find:15) equals: list1 tail
+	
+]
+
+{ #category : #running }
+MyListTests >> testHead [
+
+	list1 add: 10.
+	self assert: list1 head value equals:10.
+	list1 add:5.
+	self assert: list1 head value equals:10.
+	list1 add: 15 before: 10.
+	self assert: list1 head value equals:15.
 	
 ]
 
@@ -59,8 +82,21 @@ MyListTests >> testSize [
 ]
 
 { #category : #running }
-MyListTests >> testinclude [
+MyListTests >> testTail [
 
+	list1 add: 10.
+	self assert: list1 tail value equals:10.
+	list1 add:5.
+	self assert: list1 tail value equals:5.
+	list1 add: 15 before: 10.
+	self assert: list1 tail value equals:5.
+	
+]
+
+{ #category : #running }
+MyListTests >> testinclude [
+	
+	self deny:  (list1 includes:10) .
 	list1 add: 10.
 	self deny: (list1 includes:5).
 	list1 add: 5.

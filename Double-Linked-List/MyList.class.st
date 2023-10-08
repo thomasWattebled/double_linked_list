@@ -14,8 +14,8 @@ MyList >> add: aValue [
 	| prevTail node|
 	node := Node new value: aValue .
 	head ifNil: [ head := node.
-						tail := node.
-						^ aValue ].				
+						tail := node. 
+						^ aValue].				
 	tail ifNotNil: [ prevTail := tail ].
 	prevTail next: node.
 	node prev: prevTail .
